@@ -1,5 +1,7 @@
 # RandomCat
 
+This is code for https://kriwil.com/development/phoenix-live-view-beginner-guide/
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
