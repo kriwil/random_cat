@@ -7,7 +7,7 @@ defmodule RandomCatWeb.CatLive do
     <div>
       <img src="<%= @url %>">
     </div>
-    <button phx-click="moar">moar!</button>
+    <button phx-click="moar" phx-hook="MoarButton">moar!</button>
     """
   end
 
