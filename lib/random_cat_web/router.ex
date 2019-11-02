@@ -1,5 +1,6 @@
 defmodule RandomCatWeb.Router do
   use RandomCatWeb, :router
+    import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -17,6 +18,7 @@ defmodule RandomCatWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/cat", CatLive
   end
 
   # Other scopes may use custom stacks.
