@@ -12,7 +12,8 @@ config :random_cat, RandomCatWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "pHYmjNx8hXgwD79NJtw6NVfZ9Tk1TyccQLKgglJASXpYOWZljoLT0KpVvGDNt4B/",
   render_errors: [view: RandomCatWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: RandomCat.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: RandomCat.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "Do9kWOxs0PjEG5NDp/ZE4wEFfdXxgN8b"]
 
 # Configures Elixir's Logger
 config :logger, :console,
