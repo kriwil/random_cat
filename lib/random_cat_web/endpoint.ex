@@ -1,6 +1,8 @@
 defmodule RandomCatWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :random_cat
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", RandomCatWeb.UserSocket,
     websocket: true,
     longpoll: false
