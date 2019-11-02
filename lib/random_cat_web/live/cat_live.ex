@@ -4,23 +4,34 @@ defmodule RandomCatWeb.CatLive do
 
   def render(assigns) do
     ~L"""
-    <img src="<%= @url %>">
+    <div>
+      <img src="<%= @url %>">
+    </div>
+    <button phx-click="moar">moar!</button>
     """
   end
 
-  def mount(%{}, socket) do
+  def mount(_session, socket) do
+    {:ok, assign(socket, :url, get_cat_url())}
+  end
+
+  def handle_event("moar", _values, socket) do
+    {:noreply, assign(socket, :url, get_cat_url())}
+  end
+
+  defp get_cat_url() do
     fallback = "http://lorempixel.com/g/500/300/animals/"
     case HTTPoison.get("http://aws.random.cat/meow") do
       {:ok, %HTTPoison.Response{body: body}} ->
         case Jason.decode(body) do
           {:ok, %{"file" => url}} ->
-            {:ok, assign(socket, :url, url)}
+            url
           {:error, _} ->
-            {:ok, assign(socket, :url, fallback)}
+            fallback
         end
 
       {:error, _} ->
-        {:ok, assign(socket, :url, fallback)}
+        fallback
     end
   end
 end
